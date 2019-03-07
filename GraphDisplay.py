@@ -38,6 +38,9 @@ class Ui_MainWindow(object):
         self.FreqButton = QtWidgets.QPushButton(self.centralwidget)
         self.FreqButton.setGeometry(QtCore.QRect(612, 350, 121, 31))
         self.FreqButton.setObjectName("FreqButton")
+        self.Display = MplWidget(self.centralwidget)
+        self.Display.setGeometry(QtCore.QRect(10, 10, 591, 521))
+        self.Display.setObjectName("Display")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 26))
@@ -76,6 +79,7 @@ class Ui_MainWindow(object):
         self.newFunc.setText(_translate("MainWindow", "New"))
         self.actionFreq.setText(_translate("MainWindow", "Freq"))
 
+from mplwidget import MplWidget
 
 if __name__ == "__main__":
     import sys
