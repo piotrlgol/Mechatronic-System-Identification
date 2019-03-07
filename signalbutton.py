@@ -1,9 +1,14 @@
 from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtCore import pyqtSignal
 
 class SignalButton(QPushButton):
-    def __init__():
-        super().__init__()
+    isclicked = pyqtSignal(str)
 
-    def on_clicked(self, bool):
-        self.bool = not self.bool
-        self.isclicked.emit(self.bool, self)
+    def __init__(self, name):
+        QPushButton.__init__(self, name)
+        self.text = " "
+        self.clicked.connect(self.on_clicked)
+
+    def on_clicked(self, str):
+        print("in button: ", self.text)
+        self.isclicked.emit(self.text)

@@ -20,6 +20,8 @@ class AppWindow(QMainWindow):
 
         self.function = None
 
+        self.ui.TimeButton.text = "time"
+
         self.ui.newFunc.triggered.connect(self.new_function)
         self.ui.TimeButton.clicked.connect(self.call_Math)
         self.ui.FreqButton.clicked.connect(self.call_Math)
@@ -34,6 +36,7 @@ class AppWindow(QMainWindow):
         self.ui.Display.canvas.draw()
 
     def call_Math(self, operation):
+        print("in main: ", operation)
         if self.function is None:
             return
         if operation == "time":

@@ -32,10 +32,10 @@ class Ui_MainWindow(object):
         self.Fs = QtWidgets.QLineEdit(self.centralwidget)
         self.Fs.setGeometry(QtCore.QRect(640, 260, 113, 22))
         self.Fs.setObjectName("Fs")
-        self.TimeButton = QtWidgets.QPushButton(self.centralwidget)
+        self.TimeButton = SignalButton(self.centralwidget)
         self.TimeButton.setGeometry(QtCore.QRect(612, 310, 111, 31))
         self.TimeButton.setObjectName("TimeButton")
-        self.FreqButton = QtWidgets.QPushButton(self.centralwidget)
+        self.FreqButton = SignalButton(self.centralwidget)
         self.FreqButton.setGeometry(QtCore.QRect(612, 350, 121, 31))
         self.FreqButton.setObjectName("FreqButton")
         self.Display = MplWidget(self.centralwidget)
@@ -80,6 +80,7 @@ class Ui_MainWindow(object):
         self.actionFreq.setText(_translate("MainWindow", "Freq"))
 
 from mplwidget import MplWidget
+from signalbutton import SignalButton
 
 if __name__ == "__main__":
     import sys

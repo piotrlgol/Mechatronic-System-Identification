@@ -101,7 +101,7 @@
      <string>200</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="TimeButton">
+   <widget class="SignalButton" name="TimeButton">
     <property name="geometry">
      <rect>
       <x>612</x>
@@ -114,7 +114,7 @@
      <string>Time domain</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="FreqButton">
+   <widget class="SignalButton" name="FreqButton">
     <property name="geometry">
      <rect>
       <x>612</x>
@@ -173,6 +173,11 @@
    <extends>QWidget</extends>
    <header>mplwidget.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SignalButton</class>
+   <extends>QPushButton</extends>
+   <header>signalbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

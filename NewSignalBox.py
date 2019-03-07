@@ -56,10 +56,14 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        self.TimeStart.setText(_translate("Dialog", "0"))
+        self.Equation.setText(_translate("Dialog", "np.sin(t)"))
         self.StartLabel.setText(_translate("Dialog", "Start time"))
         self.EquationLabel.setText(_translate("Dialog", "Function equation"))
         self.EndLabel.setText(_translate("Dialog", "End time"))
+        self.TimeEnd.setText(_translate("Dialog", "1"))
         self.FsLabel.setText(_translate("Dialog", "Sampling frequency"))
+        self.Fs.setText(_translate("Dialog", "200"))
 
 
 if __name__ == "__main__":
