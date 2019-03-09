@@ -1,4 +1,5 @@
 import sys
+import os
 import numpy as np
 from PyQt5.QtWidgets import QApplication, QMainWindow, QSizePolicy
 from GraphDisplay import Ui_MainWindow
@@ -23,6 +24,7 @@ class AppWindow(QMainWindow):
         self.ui.newFunc.triggered.connect(self.new_function)
         self.ui.TimeButton.clicked.connect(lambda: self.call_Math("time"))
         self.ui.FreqButton.clicked.connect(lambda: self.call_Math("freq"))
+        self.ui.STFTButton.clicked.connect()
 
     def new_function(self):
         new_window = NewFunctWindow()
@@ -30,6 +32,7 @@ class AppWindow(QMainWindow):
             self.function = new_window.function
 
     def plot(self, x, y):
+        self.ui.Display.canvas.ax.clear()
         self.ui.Display.canvas.ax.plot(x, y)
         self.ui.Display.canvas.draw()
 
@@ -49,6 +52,7 @@ class AppWindow(QMainWindow):
 
 
 app = QApplication(sys.argv)
+os.environ["QT_QUICK_CONTROLS_STYLE"] = "Fusion"
 w = AppWindow()
 w.show()
 sys.exit(app.exec_())
