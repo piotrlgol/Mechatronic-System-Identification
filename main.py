@@ -24,7 +24,8 @@ class AppWindow(QMainWindow):
         self.ui.newFunc.triggered.connect(self.new_function)
         self.ui.TimeButton.clicked.connect(lambda: self.call_Math("time"))
         self.ui.FreqButton.clicked.connect(lambda: self.call_Math("freq"))
-        self.ui.STFTButton.clicked.connect()
+        self.ui.STFTButton.clicked.connect(lambda: self.call_Math("stft"))
+        self.ui.CWTButton.clicked.connect(lambda: self.call_Math("cwt"))
 
     def new_function(self):
         new_window = NewFunctWindow()
@@ -36,6 +37,16 @@ class AppWindow(QMainWindow):
         self.ui.Display.canvas.ax.plot(x, y)
         self.ui.Display.canvas.draw()
 
+    def plot3D(self, x, y, z):
+        self.ui.Display.canvas.ax.clear()
+        self.ui.Display.canvas.ax.pcolormesh(x,y,z)
+        self.ui.Display.canvas.draw()
+
+    def plot3D2(self, z):
+        self.ui.Display.canvas.ax.clear()
+        self.ui.Display.canvas.ax.pcolormesh(z)
+        self.ui.Display.canvas.draw()
+
     def call_Math(self, operation):
         if self.function is None:
             return
@@ -43,12 +54,15 @@ class AppWindow(QMainWindow):
             x, y = Math.time_domain(self.function)
             self.plot(x,y)
         elif operation == "freq":
-            x, y = Math.frequency_domain(self.function)
+            cut = self.ui.CutAt0.isChecked()
+            x, y = Math.frequency_domain(self.function, cut)
             self.plot(x,y)
         elif operation == "stft":
-            pass
+            x, y, z = Math.stft(self.function)
+            self.plot3D(x,y,z)
         elif operation == "cwt":
-            pass
+            z = Math.cwt(self.function)
+            self.plot3D2(z)
 
 
 app = QApplication(sys.argv)
