@@ -37,14 +37,9 @@ class AppWindow(QMainWindow):
         self.ui.Display.canvas.ax.plot(x, y)
         self.ui.Display.canvas.draw()
 
-    def plot3D(self, x, y, z):
+    def plot3D(self, *args):
         self.ui.Display.canvas.ax.clear()
-        self.ui.Display.canvas.ax.pcolormesh(x,y,z)
-        self.ui.Display.canvas.draw()
-
-    def plot3D2(self, z):
-        self.ui.Display.canvas.ax.clear()
-        self.ui.Display.canvas.ax.pcolormesh(z)
+        self.ui.Display.canvas.ax.pcolormesh(*args)
         self.ui.Display.canvas.draw()
 
     def call_Math(self, operation):
@@ -62,7 +57,7 @@ class AppWindow(QMainWindow):
             self.plot3D(x,y,z)
         elif operation == "cwt":
             z = Math.cwt(self.function)
-            self.plot3D2(z)
+            self.plot3D(z)
 
 
 app = QApplication(sys.argv)
