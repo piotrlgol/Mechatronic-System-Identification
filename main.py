@@ -6,6 +6,7 @@ from GraphDisplay import Ui_MainWindow
 
 from SignalProcesing import Math, Function
 from NewSignal import NewFunctWindow
+from stftWindow import stftFunctWindow
 
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
@@ -53,8 +54,17 @@ class AppWindow(QMainWindow):
             x, y = Math.frequency_domain(self.function, cut)
             self.plot(x,y)
         elif operation == "stft":
-            x, y, z = Math.stft(self.function)
-            self.plot3D(x,y,z)
+            new_window = stftFunctWindow()
+            if new_window.exec_():
+                window = new_window.window
+                persek = new_window.persek
+                overlap = new_window.overlap
+                _nfft = new_window.nfft
+            try:
+                x, y, z = Math.stft(self.function, window, persek, overlap, _nfft)
+                self.plot3D(x,y,z)
+            except UnboundLocalError:
+                return
         elif operation == "cwt":
             z = Math.cwt(self.function)
             self.plot3D(z)

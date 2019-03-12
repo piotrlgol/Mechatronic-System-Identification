@@ -27,8 +27,8 @@ class Math():
         return frequency, abs(signal_frequencies)
 
     @staticmethod
-    def stft(sig):
-        f, t, Zxx = signal.stft(sig.amplitude, sig.Fs, nperseg=50)
+    def stft(sig, win, persek, overlap, _nfft):
+        f, t, Zxx = signal.stft(sig.amplitude, sig.Fs, window=win, nperseg=persek, noverlap=overlap, nfft=_nfft)
         return t, f, np.abs(Zxx)
 
     @staticmethod
