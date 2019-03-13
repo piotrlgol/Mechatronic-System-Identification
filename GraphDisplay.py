@@ -26,6 +26,8 @@ class Ui_MainWindow(object):
         self.CutAt0 = QtWidgets.QCheckBox(self.centralwidget)
         self.CutAt0.setGeometry(QtCore.QRect(760, 100, 16, 16))
         self.CutAt0.setText("")
+        self.CutAt0.setChecked(False)
+        self.CutAt0.setTristate(False)
         self.CutAt0.setObjectName("CutAt0")
         self.STFTButton = QtWidgets.QPushButton(self.centralwidget)
         self.STFTButton.setGeometry(QtCore.QRect(610, 150, 131, 31))

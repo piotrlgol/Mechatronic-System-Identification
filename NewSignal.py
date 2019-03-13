@@ -1,6 +1,7 @@
 import sys
 import numpy as np
-from PyQt5.QtWidgets import QApplication, QMainWindow, QSizePolicy, QDialog
+import h5py
+from PyQt5.QtWidgets import QApplication, QMainWindow, QSizePolicy, QDialog, QFileDialog
 from NewSignalBox import Ui_Dialog
 from SignalProcesing import Function
 
@@ -14,16 +15,29 @@ class NewFunctWindow(QDialog):
 
         self.ui.buttonBox.accepted.connect(self.accept)
         self.ui.buttonBox.rejected.connect(self.reject)
+        self.ui.BrowseButton.clicked.connect(self.choose_file)
 
     def accept(self):
-        time_start = float(self.ui.TimeStart.text())
-        time_end = float(self.ui.TimeEnd.text())
-        Fs = int(self.ui.Fs.text())
-        t = np.linspace(time_start,time_end,Fs)
-        equation_txt = self.ui.Equation.text()
-        a = eval(equation_txt)
+        if self.ui.FilePathLine.text() is not None:
+            file = h5py.File(self.ui.FilePathLine, 'r')
+            t = file['t'].values
+            a = file['t'].values
+            Fs = 1/(t[1]-t[0])
+        else:
+            time_start = float(self.ui.TimeStart.text())
+            time_end = float(self.ui.TimeEnd.text())
+            Fs = int(self.ui.Fs.text())
+            t = np.linspace(time_start,time_end,Fs)
+            equation_txt = self.ui.Equation.text()
+            a = eval(equation_txt)
         self.function = Function(t,a,Fs)
         super().accept()
+
+    def choose_file(self):
+        fname = QFileDialog.getOpenFileName(None, 'Open file',
+                                            'C:\\',
+                                            "Function (*.mat)")
+        self.ui.FilePathLine.setProperty("text", fname[0])
 
 
 if __name__ == "__main__":
