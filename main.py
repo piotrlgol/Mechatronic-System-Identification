@@ -66,8 +66,8 @@ class AppWindow(QMainWindow):
             except UnboundLocalError:
                 return
         elif operation == "cwt":
-            z = Math.cwt(self.function)
-            self.plot3D(z)
+            x, y, z = Math.cwt(self.function)
+            self.plot3D(x,y,z)
 
 
 app = QApplication(sys.argv)

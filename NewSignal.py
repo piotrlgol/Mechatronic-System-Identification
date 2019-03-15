@@ -18,12 +18,11 @@ class NewFunctWindow(QDialog):
         self.ui.BrowseButton.clicked.connect(self.choose_file)
 
     def accept(self):
-        if self.ui.FilePathLine.text() is not None:
+        try:
             file = h5py.File(self.ui.FilePathLine, 'r')
             t = file['t'].values
             a = file['t'].values
-            Fs = 1/(t[1]-t[0])
-        else:
+        except TypeError:
             time_start = float(self.ui.TimeStart.text())
             time_end = float(self.ui.TimeEnd.text())
             Fs = int(self.ui.Fs.text())

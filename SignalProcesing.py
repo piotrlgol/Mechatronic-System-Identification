@@ -1,6 +1,7 @@
 import numpy as np
 from scipy import signal
 import matplotlib.pyplot as plt
+import pywt
 
 class Function():
     def __init__(self, t, a, Fs):
@@ -33,13 +34,7 @@ class Math():
 
     @staticmethod
     def cwt(sig):
-        cwtmatr = signal.cwt(sig.amplitude, signal.ricker, np.arange(1, 31))
-        return cwtmatr
+        coef, freqs = pywt.cwt(sig.amplitude, np.arange(1,50),'mexh', sampling_period=sig.Fs)
+        return sig.time, freqs, coef
 
-if __name__ == "__main__":
-    fs =400
-    t = np.linspace(0,2*np.pi,fs)
-    a = np.sin(t*50)
-    f1 = Function(t,a,fs)
-    Math.stft(f1)
 
