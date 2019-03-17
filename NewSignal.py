@@ -5,6 +5,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QSizePolicy, QDialog, QFi
 from NewSignalBox import Ui_Dialog
 from SignalProcesing import Function
 
+from scipy.io import loadmat
+
 class NewFunctWindow(QDialog):
     def __init__(self):
         super().__init__()
@@ -19,18 +21,20 @@ class NewFunctWindow(QDialog):
 
     def accept(self):
         try:
-            file = h5py.File(self.ui.FilePathLine, 'r')
-            t = file['t'].values
-            a = file['t'].values
-        except TypeError:
+            mat = loadmat(self.ui.FilePathLine.text())
+            t = mat["t"][0]
+            a = mat["x"][0]
+            Fs = (1/(t[1]-t[0]))
+        except FileNotFoundError:      
             time_start = float(self.ui.TimeStart.text())
             time_end = float(self.ui.TimeEnd.text())
             Fs = int(self.ui.Fs.text())
             t = np.linspace(time_start,time_end,Fs)
             equation_txt = self.ui.Equation.text()
             a = eval(equation_txt)
-        self.function = Function(t,a,Fs)
-        super().accept()
+        finally:
+            self.function = Function(t,a,Fs)
+            super().accept()
 
     def choose_file(self):
         fname = QFileDialog.getOpenFileName(None, 'Open file',
