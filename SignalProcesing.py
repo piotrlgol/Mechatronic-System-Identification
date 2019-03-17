@@ -33,8 +33,8 @@ class Math():
         return t, f, np.abs(Zxx)
 
     @staticmethod
-    def cwt(sig):
-        coef, freqs = pywt.cwt(sig.amplitude, np.arange(1,50),'mexh', sampling_period=sig.Fs)
-        return sig.time, freqs, coef
+    def cwt(sig, scMin, scMax, wavelet):
+        coef, freqs = pywt.cwt(sig.amplitude, np.arange(scMin,scMax), wavelet, sampling_period=sig.Fs)
+        return sig.time, freqs, coef.real
 
 

@@ -7,6 +7,7 @@ from GraphDisplay import Ui_MainWindow
 from SignalProcesing import Math, Function
 from NewSignal import NewFunctWindow
 from stftWindow import stftFunctWindow
+from cwtWindow import cwtFunctWindow
 
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
@@ -66,7 +67,12 @@ class AppWindow(QMainWindow):
             except UnboundLocalError:
                 return
         elif operation == "cwt":
-            x, y, z = Math.cwt(self.function)
+            new_window = cwtFunctWindow()
+            if new_window.exec_():
+                scMin = new_window.scMin
+                scMax = new_window.scMax
+                wavelet = new_window.wavelet
+            x, y, z = Math.cwt(self.function, scMin, scMax, wavelet)
             self.plot3D(x,y,z)
 
 
