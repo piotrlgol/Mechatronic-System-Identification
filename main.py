@@ -72,8 +72,11 @@ class AppWindow(QMainWindow):
                 scMin = new_window.scMin
                 scMax = new_window.scMax
                 wavelet = new_window.wavelet
-            x, y, z = Math.cwt(self.function, scMin, scMax, wavelet)
-            self.plot3D(x,y,z)
+            try:
+                x, y, z = Math.cwt(self.function, scMin, scMax, wavelet)
+                self.plot3D(x,y,z)
+            except UnboundLocalError:
+                return
 
 
 app = QApplication(sys.argv)
