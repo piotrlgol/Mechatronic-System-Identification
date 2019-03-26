@@ -49,13 +49,13 @@ class Ui_Dialog(object):
         self.ScalesMin.setGeometry(QtCore.QRect(270, 70, 113, 22))
         self.ScalesMin.setObjectName("ScalesMin")
         self.ScalesMax = QtWidgets.QLineEdit(Dialog)
-        self.ScalesMax.setGeometry(QtCore.QRect(260, 160, 113, 22))
+        self.ScalesMax.setGeometry(QtCore.QRect(270, 160, 113, 22))
         self.ScalesMax.setObjectName("ScalesMax")
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(290, 40, 81, 16))
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(Dialog)
-        self.label_2.setGeometry(QtCore.QRect(280, 140, 71, 16))
+        self.label_2.setGeometry(QtCore.QRect(290, 140, 71, 16))
         self.label_2.setObjectName("label_2")
 
         self.retranslateUi(Dialog)
@@ -66,7 +66,7 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.groupBox.setTitle(_translate("Dialog", "GroupBox"))
+        self.groupBox.setTitle(_translate("Dialog", "Wavelet"))
         self.radioCMOR.setText(_translate("Dialog", "cmor"))
         self.radioMEXH.setText(_translate("Dialog", "mexh"))
         self.radioMORL.setText(_translate("Dialog", "morl"))

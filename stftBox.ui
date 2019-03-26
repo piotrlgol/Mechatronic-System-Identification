@@ -134,6 +134,9 @@
     <property name="text">
      <string>boxcar</string>
     </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QRadioButton" name="radTriang">
     <property name="geometry">
@@ -185,6 +188,9 @@
     </property>
     <property name="text">
      <string>hann</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QRadioButton" name="radBartlett">
