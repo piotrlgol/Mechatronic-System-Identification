@@ -1,5 +1,4 @@
 import sys
-import os
 import numpy as np
 from PyQt5.QtWidgets import QApplication, QMainWindow, QSizePolicy
 from GraphDisplay import Ui_MainWindow
@@ -78,11 +77,10 @@ class AppWindow(QMainWindow):
             except UnboundLocalError:
                 return
 
-
-app = QApplication(sys.argv)
-os.environ["QT_QUICK_CONTROLS_STYLE"] = "Fusion"
-w = AppWindow()
-w.show()
-sys.exit(app.exec_())
+if __name__ == "__main__": 
+    app = QApplication(sys.argv)
+    w = AppWindow()
+    w.show()
+    sys.exit(app.exec_())
 
 
