@@ -42,7 +42,7 @@ class NewFunctWindow(QDialog):
                                             "Function (*.mat)")
         self.ui.FilePathLine.setProperty("text", fname[0])
 
-
+96
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     w = NewFunctWindow()
