@@ -20,6 +20,7 @@ class AppWindow(QMainWindow):
         self.ui.setupUi(self)
         self.show()
 
+        self.addToolBar(NavigationToolbar(self.ui.Display.canvas, self))
         self.function = None
 
         self.ui.newFunc.triggered.connect(self.new_function)
