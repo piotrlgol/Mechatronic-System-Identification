@@ -29,7 +29,7 @@ class NewFunctWindow(QDialog):
             time_start = float(self.ui.TimeStart.text())
             time_end = float(self.ui.TimeEnd.text())
             Fs = int(self.ui.Fs.text())
-            t = np.linspace(time_start,time_end,Fs)
+            t = np.linspace(time_start,time_end-(1/Fs),Fs)
             equation_txt = self.ui.Equation.text()
             a = eval(equation_txt)
         finally:

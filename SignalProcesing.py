@@ -19,12 +19,12 @@ class Math():
     def frequency_domain(sig, cut_0 = False):
         if cut_0:
             signal_frequencies = np.fft.fft(sig.amplitude)
-            frequency = np.fft.fftfreq(sig.time.size, 1/sig.Fs)
+            frequency = np.fft.fftfreq(len(signal_frequencies), sig.time[-1]/sig.Fs)
             signal_frequencies = signal_frequencies[:int(-len(frequency)/2)]
             frequency = frequency[:int(len(frequency)/2)]
         else:
             signal_frequencies = np.fft.fft(sig.amplitude)
-            frequency = np.fft.fftfreq(sig.time.size, 1/sig.Fs)
+            frequency = np.fft.fftfreq(len(signal_frequencies), sig.time[-1]/sig.Fs)
         return frequency, abs(signal_frequencies)
 
     @staticmethod
