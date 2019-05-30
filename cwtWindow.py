@@ -1,7 +1,7 @@
 import sys
 import numpy as np
 from PyQt5.QtWidgets import QApplication, QMainWindow, QSizePolicy, QDialog, QRadioButton
-from cwtBox import Ui_Dialog
+from windows.cwtBox import Ui_Dialog
 
 class cwtFunctWindow(QDialog):
     def __init__(self):

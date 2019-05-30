@@ -2,7 +2,7 @@ import sys
 import numpy as np
 import h5py
 from PyQt5.QtWidgets import QApplication, QMainWindow, QSizePolicy, QDialog, QFileDialog
-from NewSignalBox import Ui_Dialog
+from windows.NewSignalBox import Ui_Dialog
 from SignalProcesing import Function
 
 from scipy.io import loadmat
