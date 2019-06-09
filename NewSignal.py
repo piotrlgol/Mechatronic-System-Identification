@@ -1,5 +1,7 @@
 import sys
 import numpy as np
+from numpy import sin, cos, tan, log, exp
+from numpy.random import rand
 import h5py
 from PyQt5.QtWidgets import QApplication, QMainWindow, QSizePolicy, QDialog, QFileDialog
 from windows.NewSignalBox import Ui_Dialog
@@ -31,6 +33,7 @@ class NewFunctWindow(QDialog):
             Fs = int(self.ui.Fs.text())
             t = np.linspace(time_start,time_end-(1/Fs),int(time_end*Fs))
             equation_txt = self.ui.Equation.text()
+            equation_txt = equation_txt.replace("rand(t)", "rand(len(t))")
             a = eval(equation_txt)
         finally:
             self.function = Function(t,a,Fs)
