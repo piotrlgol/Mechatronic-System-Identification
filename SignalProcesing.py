@@ -3,14 +3,29 @@ from scipy import signal
 import matplotlib.pyplot as plt
 import pywt
 
-class Function():
+class Function:
     def __init__(self, t, a, Fs):
         self.time = t
         self.amplitude = a
         self.Fs = Fs
 
+class Data3d:
+    def __init__(self, x, y, z, lx, ly, lz):
+        self.x = x
+        self.y = y
+        self.z = z
+        self.label_x = lx
+        self.label_y = ly
+        self.label_z = lz
     
-class Math(): 
+    def get_data(self):
+        return self.x, self. y, self. z
+
+    def get_labels(self):
+        return self.label_x, self.label_y, self.label_z
+
+    
+class Math: 
     @staticmethod   
     def time_domain(sig):
        return sig.time, sig.amplitude
