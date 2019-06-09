@@ -55,7 +55,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>np.sin(t)</string>
+    <string>sin(2*pi*10*t)</string>
    </property>
   </widget>
   <widget class="QLabel" name="StartLabel">

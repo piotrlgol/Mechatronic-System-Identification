@@ -1,7 +1,7 @@
 import sys
 import numpy as np
 from PyQt5.QtWidgets import QApplication, QMainWindow, QSizePolicy
-from GraphDisplay import Ui_MainWindow
+from windows.GraphDisplay import Ui_MainWindow
 
 from SignalProcesing import Math, Function
 from NewSignal import NewFunctWindow
@@ -20,6 +20,7 @@ class AppWindow(QMainWindow):
         self.ui.setupUi(self)
         self.show()
 
+        self.addToolBar(NavigationToolbar(self.ui.Display.canvas, self))
         self.function = None
 
         self.ui.newFunc.triggered.connect(self.new_function)
