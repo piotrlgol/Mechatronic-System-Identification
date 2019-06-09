@@ -71,7 +71,7 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.TimeStart.setText(_translate("Dialog", "0"))
-        self.Equation.setText(_translate("Dialog", "np.sin(t)"))
+        self.Equation.setText(_translate("Dialog", "sin(2*pi*10*t)"))
         self.StartLabel.setText(_translate("Dialog", "Start time"))
         self.EquationLabel.setText(_translate("Dialog", "Function equation"))
         self.EndLabel.setText(_translate("Dialog", "End time"))

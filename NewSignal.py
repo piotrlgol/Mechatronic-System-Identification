@@ -1,6 +1,6 @@
 import sys
 import numpy as np
-from numpy import sin, cos, tan, log, exp
+from numpy import sin, cos, tan, log, exp, pi
 from numpy.random import rand
 import h5py
 from PyQt5.QtWidgets import QApplication, QMainWindow, QSizePolicy, QDialog, QFileDialog
