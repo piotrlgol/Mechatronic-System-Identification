@@ -82,8 +82,8 @@ class AppWindow(QMainWindow):
                 wavelet = new_window.wavelet
             try:
                 x, y, z = Math.cwt(self.function, scMin, scMax, wavelet)
-                self.temp3d = Data3d(x,y,z,'time','scale', 'Amplitude')
-                self.plot3D(x,y,z)
+                self.temp3d = Data3d(x, y, z ,'time','scale', 'Amplitude')
+                self.plot3D(z)
             except UnboundLocalError:
                 return
 
@@ -91,7 +91,7 @@ class AppWindow(QMainWindow):
         fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
         x, y, z = self.temp3d.get_data()
-        lx, ly, lz =self.temp3d.get_labels()
+        lx, ly, lz = self.temp3d.get_labels()
         x, y = np.meshgrid(x, y)
         ax.plot_surface(x, y, z, cmap=cm.coolwarm)
         ax.set(xlabel=lx, ylabel=ly, zlabel=lz)

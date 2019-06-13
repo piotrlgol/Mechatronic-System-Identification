@@ -20,4 +20,6 @@ class cwtFunctWindow(QDialog):
         for button in self.ui.groupBox.findChildren(QRadioButton):
             if button.isChecked():
                 self.wavelet = button.text()
+            self.scMin = int(self.ui.ScalesMin.text())
+            self.scMax = int(self.ui.ScalesMax.text())
         super().accept()

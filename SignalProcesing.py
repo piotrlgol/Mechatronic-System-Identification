@@ -35,7 +35,11 @@ class Math:
         if cut_0:
             signal_frequencies = np.fft.fft(sig.amplitude)
             frequency = np.fft.fftfreq(len(signal_frequencies), 1/sig.Fs)
-            signal_frequencies = signal_frequencies[:int(-len(frequency)/2)]
+            if len(frequency)%2 != 0:
+                fq_len = len(frequency)+1
+            else:
+                fq_len = len(frequency)
+            signal_frequencies = signal_frequencies[:int(-fq_len/2)]
             frequency = frequency[:int(len(frequency)/2)]
         else:
             signal_frequencies = np.fft.fft(sig.amplitude)
@@ -51,6 +55,6 @@ class Math:
     @staticmethod
     def cwt(sig, scMin, scMax, wavelet):
         coef, freqs = pywt.cwt(sig.amplitude, np.arange(scMin,scMax), wavelet, sampling_period=sig.Fs)
-        return sig.time, freqs, coef.real
+        return sig.time, np.arange(scMin,scMax), coef.real
 
 
