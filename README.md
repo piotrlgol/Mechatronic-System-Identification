@@ -17,5 +17,5 @@ The function equation uses t as a time variable, it uses sin, cos, tan, log, exp
 example:
 `sin(2*pi*10*t) + rand(t)`
 
-!Important!
+## Important!
 The function equation uses `eval()` function, which is very dangerous if you accept strings to evaluate from untrusted input.
